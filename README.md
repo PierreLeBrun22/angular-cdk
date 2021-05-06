@@ -9,6 +9,4 @@ You can install this version of the @angular/cdk lib with :
 $ npm i https://github.com/PierreLeBrun22/angular-cdk.git 
 ```
 
-The sources for this package are in the main [Angular Material](https://github.com/angular/components) repo. Please file issues and pull requests against that repo.
-
-License: MIT
+The sources are forked and modified from [Angular Material](https://github.com/angular/components/tree/11.2.x). You can find them here : https://github.com/PierreLeBrun22/components/tree/11.2.x
