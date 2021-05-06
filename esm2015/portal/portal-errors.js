@@ -1,0 +1,51 @@
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * Throws an exception when attempting to attach a null portal to a host.
+ * @docs-private
+ */
+export function throwNullPortalError() {
+    throw Error('Must provide a portal to attach');
+}
+/**
+ * Throws an exception when attempting to attach a portal to a host that is already attached.
+ * @docs-private
+ */
+export function throwPortalAlreadyAttachedError() {
+    throw Error('Host already has a portal attached');
+}
+/**
+ * Throws an exception when attempting to attach a portal to an already-disposed host.
+ * @docs-private
+ */
+export function throwPortalOutletAlreadyDisposedError() {
+    throw Error('This PortalOutlet has already been disposed');
+}
+/**
+ * Throws an exception when attempting to attach an unknown portal type.
+ * @docs-private
+ */
+export function throwUnknownPortalTypeError() {
+    throw Error('Attempting to attach an unknown Portal type. BasePortalOutlet accepts either ' +
+        'a ComponentPortal or a TemplatePortal.');
+}
+/**
+ * Throws an exception when attempting to attach a portal to a null host.
+ * @docs-private
+ */
+export function throwNullPortalOutletError() {
+    throw Error('Attempting to attach a portal to a null PortalOutlet');
+}
+/**
+ * Throws an exception when attempting to detach a portal that is not attached.
+ * @docs-private
+ */
+export function throwNoPortalAttachedError() {
+    throw Error('Attempting to detach a portal that is not attached to a host');
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicG9ydGFsLWVycm9ycy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uL3NyYy9jZGsvcG9ydGFsL3BvcnRhbC1lcnJvcnMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7OztHQU1HO0FBRUg7OztHQUdHO0FBQ0gsTUFBTSxVQUFVLG9CQUFvQjtJQUNsQyxNQUFNLEtBQUssQ0FBQyxpQ0FBaUMsQ0FBQyxDQUFDO0FBQ2pELENBQUM7QUFFRDs7O0dBR0c7QUFDSCxNQUFNLFVBQVUsK0JBQStCO0lBQzdDLE1BQU0sS0FBSyxDQUFDLG9DQUFvQyxDQUFDLENBQUM7QUFDcEQsQ0FBQztBQUVEOzs7R0FHRztBQUNILE1BQU0sVUFBVSxxQ0FBcUM7SUFDbkQsTUFBTSxLQUFLLENBQUMsNkNBQTZDLENBQUMsQ0FBQztBQUM3RCxDQUFDO0FBRUQ7OztHQUdHO0FBQ0gsTUFBTSxVQUFVLDJCQUEyQjtJQUN6QyxNQUFNLEtBQUssQ0FBQywrRUFBK0U7UUFDL0Usd0NBQXdDLENBQUMsQ0FBQztBQUN4RCxDQUFDO0FBRUQ7OztHQUdHO0FBQ0gsTUFBTSxVQUFVLDBCQUEwQjtJQUN4QyxNQUFNLEtBQUssQ0FBQyxzREFBc0QsQ0FBQyxDQUFDO0FBQ3RFLENBQUM7QUFFRDs7O0dBR0c7QUFDSCxNQUFNLFVBQVUsMEJBQTBCO0lBQ3hDLE1BQU0sS0FBSyxDQUFDLDhEQUE4RCxDQUFDLENBQUM7QUFDOUUsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxyXG4gKiBAbGljZW5zZVxyXG4gKiBDb3B5cmlnaHQgR29vZ2xlIExMQyBBbGwgUmlnaHRzIFJlc2VydmVkLlxyXG4gKlxyXG4gKiBVc2Ugb2YgdGhpcyBzb3VyY2UgY29kZSBpcyBnb3Zlcm5lZCBieSBhbiBNSVQtc3R5bGUgbGljZW5zZSB0aGF0IGNhbiBiZVxyXG4gKiBmb3VuZCBpbiB0aGUgTElDRU5TRSBmaWxlIGF0IGh0dHBzOi8vYW5ndWxhci5pby9saWNlbnNlXHJcbiAqL1xyXG5cclxuLyoqXHJcbiAqIFRocm93cyBhbiBleGNlcHRpb24gd2hlbiBhdHRlbXB0aW5nIHRvIGF0dGFjaCBhIG51bGwgcG9ydGFsIHRvIGEgaG9zdC5cclxuICogQGRvY3MtcHJpdmF0ZVxyXG4gKi9cclxuZXhwb3J0IGZ1bmN0aW9uIHRocm93TnVsbFBvcnRhbEVycm9yKCkge1xyXG4gIHRocm93IEVycm9yKCdNdXN0IHByb3ZpZGUgYSBwb3J0YWwgdG8gYXR0YWNoJyk7XHJcbn1cclxuXHJcbi8qKlxyXG4gKiBUaHJvd3MgYW4gZXhjZXB0aW9uIHdoZW4gYXR0ZW1wdGluZyB0byBhdHRhY2ggYSBwb3J0YWwgdG8gYSBob3N0IHRoYXQgaXMgYWxyZWFkeSBhdHRhY2hlZC5cclxuICogQGRvY3MtcHJpdmF0ZVxyXG4gKi9cclxuZXhwb3J0IGZ1bmN0aW9uIHRocm93UG9ydGFsQWxyZWFkeUF0dGFjaGVkRXJyb3IoKSB7XHJcbiAgdGhyb3cgRXJyb3IoJ0hvc3QgYWxyZWFkeSBoYXMgYSBwb3J0YWwgYXR0YWNoZWQnKTtcclxufVxyXG5cclxuLyoqXHJcbiAqIFRocm93cyBhbiBleGNlcHRpb24gd2hlbiBhdHRlbXB0aW5nIHRvIGF0dGFjaCBhIHBvcnRhbCB0byBhbiBhbHJlYWR5LWRpc3Bvc2VkIGhvc3QuXHJcbiAqIEBkb2NzLXByaXZhdGVcclxuICovXHJcbmV4cG9ydCBmdW5jdGlvbiB0aHJvd1BvcnRhbE91dGxldEFscmVhZHlEaXNwb3NlZEVycm9yKCkge1xyXG4gIHRocm93IEVycm9yKCdUaGlzIFBvcnRhbE91dGxldCBoYXMgYWxyZWFkeSBiZWVuIGRpc3Bvc2VkJyk7XHJcbn1cclxuXHJcbi8qKlxyXG4gKiBUaHJvd3MgYW4gZXhjZXB0aW9uIHdoZW4gYXR0ZW1wdGluZyB0byBhdHRhY2ggYW4gdW5rbm93biBwb3J0YWwgdHlwZS5cclxuICogQGRvY3MtcHJpdmF0ZVxyXG4gKi9cclxuZXhwb3J0IGZ1bmN0aW9uIHRocm93VW5rbm93blBvcnRhbFR5cGVFcnJvcigpIHtcclxuICB0aHJvdyBFcnJvcignQXR0ZW1wdGluZyB0byBhdHRhY2ggYW4gdW5rbm93biBQb3J0YWwgdHlwZS4gQmFzZVBvcnRhbE91dGxldCBhY2NlcHRzIGVpdGhlciAnICtcclxuICAgICAgICAgICAgICAnYSBDb21wb25lbnRQb3J0YWwgb3IgYSBUZW1wbGF0ZVBvcnRhbC4nKTtcclxufVxyXG5cclxuLyoqXHJcbiAqIFRocm93cyBhbiBleGNlcHRpb24gd2hlbiBhdHRlbXB0aW5nIHRvIGF0dGFjaCBhIHBvcnRhbCB0byBhIG51bGwgaG9zdC5cclxuICogQGRvY3MtcHJpdmF0ZVxyXG4gKi9cclxuZXhwb3J0IGZ1bmN0aW9uIHRocm93TnVsbFBvcnRhbE91dGxldEVycm9yKCkge1xyXG4gIHRocm93IEVycm9yKCdBdHRlbXB0aW5nIHRvIGF0dGFjaCBhIHBvcnRhbCB0byBhIG51bGwgUG9ydGFsT3V0bGV0Jyk7XHJcbn1cclxuXHJcbi8qKlxyXG4gKiBUaHJvd3MgYW4gZXhjZXB0aW9uIHdoZW4gYXR0ZW1wdGluZyB0byBkZXRhY2ggYSBwb3J0YWwgdGhhdCBpcyBub3QgYXR0YWNoZWQuXHJcbiAqIEBkb2NzLXByaXZhdGVcclxuICovXHJcbmV4cG9ydCBmdW5jdGlvbiB0aHJvd05vUG9ydGFsQXR0YWNoZWRFcnJvcigpIHtcclxuICB0aHJvdyBFcnJvcignQXR0ZW1wdGluZyB0byBkZXRhY2ggYSBwb3J0YWwgdGhhdCBpcyBub3QgYXR0YWNoZWQgdG8gYSBob3N0Jyk7XHJcbn1cclxuIl19

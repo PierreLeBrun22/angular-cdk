@@ -1,0 +1,21 @@
+"use strict";
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.unwrapExpression = void 0;
+const ts = require("typescript");
+/**
+ * Unwraps a given expression TypeScript node. Expressions can be wrapped within multiple
+ * parentheses. e.g. "(((({exp}))))()". The function should return the TypeScript node
+ * referring to the inner expression. e.g "exp".
+ */
+function unwrapExpression(node) {
+    return ts.isParenthesizedExpression(node) ? unwrapExpression(node.expression) : node;
+}
+exports.unwrapExpression = unwrapExpression;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZnVuY3Rpb25zLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vc3JjL2Nkay9zY2hlbWF0aWNzL3VwZGF0ZS10b29sL3V0aWxzL2Z1bmN0aW9ucy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUE7Ozs7OztHQU1HOzs7QUFFSCxpQ0FBaUM7QUFFakM7Ozs7R0FJRztBQUNILFNBQWdCLGdCQUFnQixDQUFDLElBQThDO0lBQzdFLE9BQU8sRUFBRSxDQUFDLHlCQUF5QixDQUFDLElBQUksQ0FBQyxDQUFDLENBQUMsQ0FBQyxnQkFBZ0IsQ0FBQyxJQUFJLENBQUMsVUFBVSxDQUFDLENBQUMsQ0FBQyxDQUFDLElBQUksQ0FBQztBQUN2RixDQUFDO0FBRkQsNENBRUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcclxuICogQGxpY2Vuc2VcclxuICogQ29weXJpZ2h0IEdvb2dsZSBMTEMgQWxsIFJpZ2h0cyBSZXNlcnZlZC5cclxuICpcclxuICogVXNlIG9mIHRoaXMgc291cmNlIGNvZGUgaXMgZ292ZXJuZWQgYnkgYW4gTUlULXN0eWxlIGxpY2Vuc2UgdGhhdCBjYW4gYmVcclxuICogZm91bmQgaW4gdGhlIExJQ0VOU0UgZmlsZSBhdCBodHRwczovL2FuZ3VsYXIuaW8vbGljZW5zZVxyXG4gKi9cclxuXHJcbmltcG9ydCAqIGFzIHRzIGZyb20gJ3R5cGVzY3JpcHQnO1xyXG5cclxuLyoqXHJcbiAqIFVud3JhcHMgYSBnaXZlbiBleHByZXNzaW9uIFR5cGVTY3JpcHQgbm9kZS4gRXhwcmVzc2lvbnMgY2FuIGJlIHdyYXBwZWQgd2l0aGluIG11bHRpcGxlXHJcbiAqIHBhcmVudGhlc2VzLiBlLmcuIFwiKCgoKHtleHB9KSkpKSgpXCIuIFRoZSBmdW5jdGlvbiBzaG91bGQgcmV0dXJuIHRoZSBUeXBlU2NyaXB0IG5vZGVcclxuICogcmVmZXJyaW5nIHRvIHRoZSBpbm5lciBleHByZXNzaW9uLiBlLmcgXCJleHBcIi5cclxuICovXHJcbmV4cG9ydCBmdW5jdGlvbiB1bndyYXBFeHByZXNzaW9uKG5vZGU6IHRzLkV4cHJlc3Npb258dHMuUGFyZW50aGVzaXplZEV4cHJlc3Npb24pOiB0cy5FeHByZXNzaW9uIHtcclxuICByZXR1cm4gdHMuaXNQYXJlbnRoZXNpemVkRXhwcmVzc2lvbihub2RlKSA/IHVud3JhcEV4cHJlc3Npb24obm9kZS5leHByZXNzaW9uKSA6IG5vZGU7XHJcbn1cclxuIl19

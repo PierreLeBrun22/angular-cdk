@@ -1,0 +1,14 @@
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+// These are private APIs that are used both by the public APIs inside of this package, as well
+// as in unit tests of other entry-points, hence why we need to re-export them through here.
+export * from './dispatch-events';
+export * from './event-objects';
+export * from './element-focus';
+export * from './type-in-element';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi8uLi8uLi8uLi9zcmMvY2RrL3Rlc3RpbmcvdGVzdGJlZC9mYWtlLWV2ZW50cy9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7O0dBTUc7QUFFSCwrRkFBK0Y7QUFDL0YsNEZBQTRGO0FBQzVGLGNBQWMsbUJBQW1CLENBQUM7QUFDbEMsY0FBYyxpQkFBaUIsQ0FBQztBQUNoQyxjQUFjLGlCQUFpQixDQUFDO0FBQ2hDLGNBQWMsbUJBQW1CLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcclxuICogQGxpY2Vuc2VcclxuICogQ29weXJpZ2h0IEdvb2dsZSBMTEMgQWxsIFJpZ2h0cyBSZXNlcnZlZC5cclxuICpcclxuICogVXNlIG9mIHRoaXMgc291cmNlIGNvZGUgaXMgZ292ZXJuZWQgYnkgYW4gTUlULXN0eWxlIGxpY2Vuc2UgdGhhdCBjYW4gYmVcclxuICogZm91bmQgaW4gdGhlIExJQ0VOU0UgZmlsZSBhdCBodHRwczovL2FuZ3VsYXIuaW8vbGljZW5zZVxyXG4gKi9cclxuXHJcbi8vIFRoZXNlIGFyZSBwcml2YXRlIEFQSXMgdGhhdCBhcmUgdXNlZCBib3RoIGJ5IHRoZSBwdWJsaWMgQVBJcyBpbnNpZGUgb2YgdGhpcyBwYWNrYWdlLCBhcyB3ZWxsXHJcbi8vIGFzIGluIHVuaXQgdGVzdHMgb2Ygb3RoZXIgZW50cnktcG9pbnRzLCBoZW5jZSB3aHkgd2UgbmVlZCB0byByZS1leHBvcnQgdGhlbSB0aHJvdWdoIGhlcmUuXHJcbmV4cG9ydCAqIGZyb20gJy4vZGlzcGF0Y2gtZXZlbnRzJztcclxuZXhwb3J0ICogZnJvbSAnLi9ldmVudC1vYmplY3RzJztcclxuZXhwb3J0ICogZnJvbSAnLi9lbGVtZW50LWZvY3VzJztcclxuZXhwb3J0ICogZnJvbSAnLi90eXBlLWluLWVsZW1lbnQnO1xyXG4iXX0=

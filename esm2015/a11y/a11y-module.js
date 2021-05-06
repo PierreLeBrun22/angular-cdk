@@ -1,0 +1,30 @@
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+import { ObserversModule } from '@angular/cdk/observers';
+import { PlatformModule } from '@angular/cdk/platform';
+import { NgModule } from '@angular/core';
+import { CdkMonitorFocus } from './focus-monitor/focus-monitor';
+import { CdkTrapFocus } from './focus-trap/focus-trap';
+import { HighContrastModeDetector } from './high-contrast-mode/high-contrast-mode-detector';
+import { CdkAriaLive } from './live-announcer/live-announcer';
+export class A11yModule {
+    constructor(highContrastModeDetector) {
+        highContrastModeDetector._applyBodyHighContrastModeCssClasses();
+    }
+}
+A11yModule.decorators = [
+    { type: NgModule, args: [{
+                imports: [PlatformModule, ObserversModule],
+                declarations: [CdkAriaLive, CdkTrapFocus, CdkMonitorFocus],
+                exports: [CdkAriaLive, CdkTrapFocus, CdkMonitorFocus],
+            },] }
+];
+A11yModule.ctorParameters = () => [
+    { type: HighContrastModeDetector }
+];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYTExeS1tb2R1bGUuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi8uLi9zcmMvY2RrL2ExMXkvYTExeS1tb2R1bGUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7OztHQU1HO0FBRUgsT0FBTyxFQUFDLGVBQWUsRUFBQyxNQUFNLHdCQUF3QixDQUFDO0FBQ3ZELE9BQU8sRUFBQyxjQUFjLEVBQUMsTUFBTSx1QkFBdUIsQ0FBQztBQUNyRCxPQUFPLEVBQUMsUUFBUSxFQUFDLE1BQU0sZUFBZSxDQUFDO0FBQ3ZDLE9BQU8sRUFBQyxlQUFlLEVBQUMsTUFBTSwrQkFBK0IsQ0FBQztBQUM5RCxPQUFPLEVBQUMsWUFBWSxFQUFDLE1BQU0seUJBQXlCLENBQUM7QUFDckQsT0FBTyxFQUFDLHdCQUF3QixFQUFDLE1BQU0sa0RBQWtELENBQUM7QUFDMUYsT0FBTyxFQUFDLFdBQVcsRUFBQyxNQUFNLGlDQUFpQyxDQUFDO0FBUTVELE1BQU0sT0FBTyxVQUFVO0lBQ3JCLFlBQVksd0JBQWtEO1FBQzVELHdCQUF3QixDQUFDLG9DQUFvQyxFQUFFLENBQUM7SUFDbEUsQ0FBQzs7O1lBUkYsUUFBUSxTQUFDO2dCQUNSLE9BQU8sRUFBRSxDQUFDLGNBQWMsRUFBRSxlQUFlLENBQUM7Z0JBQzFDLFlBQVksRUFBRSxDQUFDLFdBQVcsRUFBRSxZQUFZLEVBQUUsZUFBZSxDQUFDO2dCQUMxRCxPQUFPLEVBQUUsQ0FBQyxXQUFXLEVBQUUsWUFBWSxFQUFFLGVBQWUsQ0FBQzthQUN0RDs7O1lBUk8sd0JBQXdCIiwic291cmNlc0NvbnRlbnQiOlsiLyoqXHJcbiAqIEBsaWNlbnNlXHJcbiAqIENvcHlyaWdodCBHb29nbGUgTExDIEFsbCBSaWdodHMgUmVzZXJ2ZWQuXHJcbiAqXHJcbiAqIFVzZSBvZiB0aGlzIHNvdXJjZSBjb2RlIGlzIGdvdmVybmVkIGJ5IGFuIE1JVC1zdHlsZSBsaWNlbnNlIHRoYXQgY2FuIGJlXHJcbiAqIGZvdW5kIGluIHRoZSBMSUNFTlNFIGZpbGUgYXQgaHR0cHM6Ly9hbmd1bGFyLmlvL2xpY2Vuc2VcclxuICovXHJcblxyXG5pbXBvcnQge09ic2VydmVyc01vZHVsZX0gZnJvbSAnQGFuZ3VsYXIvY2RrL29ic2VydmVycyc7XHJcbmltcG9ydCB7UGxhdGZvcm1Nb2R1bGV9IGZyb20gJ0Bhbmd1bGFyL2Nkay9wbGF0Zm9ybSc7XHJcbmltcG9ydCB7TmdNb2R1bGV9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xyXG5pbXBvcnQge0Nka01vbml0b3JGb2N1c30gZnJvbSAnLi9mb2N1cy1tb25pdG9yL2ZvY3VzLW1vbml0b3InO1xyXG5pbXBvcnQge0Nka1RyYXBGb2N1c30gZnJvbSAnLi9mb2N1cy10cmFwL2ZvY3VzLXRyYXAnO1xyXG5pbXBvcnQge0hpZ2hDb250cmFzdE1vZGVEZXRlY3Rvcn0gZnJvbSAnLi9oaWdoLWNvbnRyYXN0LW1vZGUvaGlnaC1jb250cmFzdC1tb2RlLWRldGVjdG9yJztcclxuaW1wb3J0IHtDZGtBcmlhTGl2ZX0gZnJvbSAnLi9saXZlLWFubm91bmNlci9saXZlLWFubm91bmNlcic7XHJcblxyXG5cclxuQE5nTW9kdWxlKHtcclxuICBpbXBvcnRzOiBbUGxhdGZvcm1Nb2R1bGUsIE9ic2VydmVyc01vZHVsZV0sXHJcbiAgZGVjbGFyYXRpb25zOiBbQ2RrQXJpYUxpdmUsIENka1RyYXBGb2N1cywgQ2RrTW9uaXRvckZvY3VzXSxcclxuICBleHBvcnRzOiBbQ2RrQXJpYUxpdmUsIENka1RyYXBGb2N1cywgQ2RrTW9uaXRvckZvY3VzXSxcclxufSlcclxuZXhwb3J0IGNsYXNzIEExMXlNb2R1bGUge1xyXG4gIGNvbnN0cnVjdG9yKGhpZ2hDb250cmFzdE1vZGVEZXRlY3RvcjogSGlnaENvbnRyYXN0TW9kZURldGVjdG9yKSB7XHJcbiAgICBoaWdoQ29udHJhc3RNb2RlRGV0ZWN0b3IuX2FwcGx5Qm9keUhpZ2hDb250cmFzdE1vZGVDc3NDbGFzc2VzKCk7XHJcbiAgfVxyXG59XHJcbiJdfQ==

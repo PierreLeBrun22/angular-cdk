@@ -1,0 +1,24 @@
+"use strict";
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.determineBaseTypes = void 0;
+const ts = require("typescript");
+/** Determines the base types of the specified class declaration. */
+function determineBaseTypes(node) {
+    if (!node.heritageClauses) {
+        return null;
+    }
+    return node.heritageClauses
+        .reduce((types, clause) => types.concat(clause.types), [])
+        .map(typeExpression => typeExpression.expression)
+        .filter(expression => expression && ts.isIdentifier(expression))
+        .map((identifier) => identifier.text);
+}
+exports.determineBaseTypes = determineBaseTypes;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYmFzZS10eXBlcy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uLy4uLy4uL3NyYy9jZGsvc2NoZW1hdGljcy9uZy11cGRhdGUvdHlwZXNjcmlwdC9iYXNlLXR5cGVzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQTs7Ozs7O0dBTUc7OztBQUVILGlDQUFpQztBQUVqQyxvRUFBb0U7QUFDcEUsU0FBZ0Isa0JBQWtCLENBQUMsSUFBeUI7SUFDMUQsSUFBSSxDQUFDLElBQUksQ0FBQyxlQUFlLEVBQUU7UUFDekIsT0FBTyxJQUFJLENBQUM7S0FDYjtJQUVELE9BQU8sSUFBSSxDQUFDLGVBQWU7U0FDdEIsTUFBTSxDQUFDLENBQUMsS0FBSyxFQUFFLE1BQU0sRUFBRSxFQUFFLENBQUMsS0FBSyxDQUFDLE1BQU0sQ0FBQyxNQUFNLENBQUMsS0FBSyxDQUFDLEVBQUUsRUFBc0MsQ0FBQztTQUM3RixHQUFHLENBQUMsY0FBYyxDQUFDLEVBQUUsQ0FBQyxjQUFjLENBQUMsVUFBVSxDQUFDO1NBQ2hELE1BQU0sQ0FBQyxVQUFVLENBQUMsRUFBRSxDQUFDLFVBQVUsSUFBSSxFQUFFLENBQUMsWUFBWSxDQUFDLFVBQVUsQ0FBQyxDQUFDO1NBQy9ELEdBQUcsQ0FBQyxDQUFDLFVBQXlCLEVBQUUsRUFBRSxDQUFDLFVBQVUsQ0FBQyxJQUFJLENBQUMsQ0FBQztBQUMzRCxDQUFDO0FBVkQsZ0RBVUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcclxuICogQGxpY2Vuc2VcclxuICogQ29weXJpZ2h0IEdvb2dsZSBMTEMgQWxsIFJpZ2h0cyBSZXNlcnZlZC5cclxuICpcclxuICogVXNlIG9mIHRoaXMgc291cmNlIGNvZGUgaXMgZ292ZXJuZWQgYnkgYW4gTUlULXN0eWxlIGxpY2Vuc2UgdGhhdCBjYW4gYmVcclxuICogZm91bmQgaW4gdGhlIExJQ0VOU0UgZmlsZSBhdCBodHRwczovL2FuZ3VsYXIuaW8vbGljZW5zZVxyXG4gKi9cclxuXHJcbmltcG9ydCAqIGFzIHRzIGZyb20gJ3R5cGVzY3JpcHQnO1xyXG5cclxuLyoqIERldGVybWluZXMgdGhlIGJhc2UgdHlwZXMgb2YgdGhlIHNwZWNpZmllZCBjbGFzcyBkZWNsYXJhdGlvbi4gKi9cclxuZXhwb3J0IGZ1bmN0aW9uIGRldGVybWluZUJhc2VUeXBlcyhub2RlOiB0cy5DbGFzc0RlY2xhcmF0aW9uKTogc3RyaW5nW118bnVsbCB7XHJcbiAgaWYgKCFub2RlLmhlcml0YWdlQ2xhdXNlcykge1xyXG4gICAgcmV0dXJuIG51bGw7XHJcbiAgfVxyXG5cclxuICByZXR1cm4gbm9kZS5oZXJpdGFnZUNsYXVzZXNcclxuICAgICAgLnJlZHVjZSgodHlwZXMsIGNsYXVzZSkgPT4gdHlwZXMuY29uY2F0KGNsYXVzZS50eXBlcyksIFtdIGFzIHRzLkV4cHJlc3Npb25XaXRoVHlwZUFyZ3VtZW50c1tdKVxyXG4gICAgICAubWFwKHR5cGVFeHByZXNzaW9uID0+IHR5cGVFeHByZXNzaW9uLmV4cHJlc3Npb24pXHJcbiAgICAgIC5maWx0ZXIoZXhwcmVzc2lvbiA9PiBleHByZXNzaW9uICYmIHRzLmlzSWRlbnRpZmllcihleHByZXNzaW9uKSlcclxuICAgICAgLm1hcCgoaWRlbnRpZmllcjogdHMuSWRlbnRpZmllcikgPT4gaWRlbnRpZmllci50ZXh0KTtcclxufVxyXG4iXX0=

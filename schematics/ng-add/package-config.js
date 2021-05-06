@@ -1,0 +1,47 @@
+"use strict";
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getPackageVersionFromPackageJson = exports.addPackageToPackageJson = void 0;
+/**
+ * Sorts the keys of the given object.
+ * @returns A new object instance with sorted keys
+ */
+function sortObjectByKeys(obj) {
+    return Object.keys(obj).sort().reduce((result, key) => (result[key] = obj[key]) && result, {});
+}
+/** Adds a package to the package.json in the given host tree. */
+function addPackageToPackageJson(host, pkg, version) {
+    if (host.exists('package.json')) {
+        const sourceText = host.read('package.json').toString('utf-8');
+        const json = JSON.parse(sourceText);
+        if (!json.dependencies) {
+            json.dependencies = {};
+        }
+        if (!json.dependencies[pkg]) {
+            json.dependencies[pkg] = version;
+            json.dependencies = sortObjectByKeys(json.dependencies);
+        }
+        host.overwrite('package.json', JSON.stringify(json, null, 2));
+    }
+    return host;
+}
+exports.addPackageToPackageJson = addPackageToPackageJson;
+/** Gets the version of the specified package by looking at the package.json in the given tree. */
+function getPackageVersionFromPackageJson(tree, name) {
+    if (!tree.exists('package.json')) {
+        return null;
+    }
+    const packageJson = JSON.parse(tree.read('package.json').toString('utf8'));
+    if (packageJson.dependencies && packageJson.dependencies[name]) {
+        return packageJson.dependencies[name];
+    }
+    return null;
+}
+exports.getPackageVersionFromPackageJson = getPackageVersionFromPackageJson;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicGFja2FnZS1jb25maWcuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi8uLi8uLi9zcmMvY2RrL3NjaGVtYXRpY3MvbmctYWRkL3BhY2thZ2UtY29uZmlnLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQTs7Ozs7O0dBTUc7OztBQUlIOzs7R0FHRztBQUNILFNBQVMsZ0JBQWdCLENBQUMsR0FBVztJQUNuQyxPQUFPLE1BQU0sQ0FBQyxJQUFJLENBQUMsR0FBRyxDQUFDLENBQUMsSUFBSSxFQUFFLENBQUMsTUFBTSxDQUFDLENBQUMsTUFBTSxFQUFFLEdBQUcsRUFBRSxFQUFFLENBQUMsQ0FBQyxNQUFNLENBQUMsR0FBRyxDQUFDLEdBQUcsR0FBRyxDQUFDLEdBQUcsQ0FBQyxDQUFDLElBQUksTUFBTSxFQUFFLEVBQUUsQ0FBQyxDQUFDO0FBQ2pHLENBQUM7QUFFRCxpRUFBaUU7QUFDakUsU0FBZ0IsdUJBQXVCLENBQUMsSUFBVSxFQUFFLEdBQVcsRUFBRSxPQUFlO0lBRTlFLElBQUksSUFBSSxDQUFDLE1BQU0sQ0FBQyxjQUFjLENBQUMsRUFBRTtRQUMvQixNQUFNLFVBQVUsR0FBRyxJQUFJLENBQUMsSUFBSSxDQUFDLGNBQWMsQ0FBRSxDQUFDLFFBQVEsQ0FBQyxPQUFPLENBQUMsQ0FBQztRQUNoRSxNQUFNLElBQUksR0FBRyxJQUFJLENBQUMsS0FBSyxDQUFDLFVBQVUsQ0FBQyxDQUFDO1FBRXBDLElBQUksQ0FBQyxJQUFJLENBQUMsWUFBWSxFQUFFO1lBQ3RCLElBQUksQ0FBQyxZQUFZLEdBQUcsRUFBRSxDQUFDO1NBQ3hCO1FBRUQsSUFBSSxDQUFDLElBQUksQ0FBQyxZQUFZLENBQUMsR0FBRyxDQUFDLEVBQUU7WUFDM0IsSUFBSSxDQUFDLFlBQVksQ0FBQyxHQUFHLENBQUMsR0FBRyxPQUFPLENBQUM7WUFDakMsSUFBSSxDQUFDLFlBQVksR0FBRyxnQkFBZ0IsQ0FBQyxJQUFJLENBQUMsWUFBWSxDQUFDLENBQUM7U0FDekQ7UUFFRCxJQUFJLENBQUMsU0FBUyxDQUFDLGNBQWMsRUFBRSxJQUFJLENBQUMsU0FBUyxDQUFDLElBQUksRUFBRSxJQUFJLEVBQUUsQ0FBQyxDQUFDLENBQUMsQ0FBQztLQUMvRDtJQUVELE9BQU8sSUFBSSxDQUFDO0FBQ2QsQ0FBQztBQW5CRCwwREFtQkM7QUFFRCxrR0FBa0c7QUFDbEcsU0FBZ0IsZ0NBQWdDLENBQUMsSUFBVSxFQUFFLElBQVk7SUFDdkUsSUFBSSxDQUFDLElBQUksQ0FBQyxNQUFNLENBQUMsY0FBYyxDQUFDLEVBQUU7UUFDaEMsT0FBTyxJQUFJLENBQUM7S0FDYjtJQUVELE1BQU0sV0FBVyxHQUFHLElBQUksQ0FBQyxLQUFLLENBQUMsSUFBSSxDQUFDLElBQUksQ0FBQyxjQUFjLENBQUUsQ0FBQyxRQUFRLENBQUMsTUFBTSxDQUFDLENBQUMsQ0FBQztJQUU1RSxJQUFJLFdBQVcsQ0FBQyxZQUFZLElBQUksV0FBVyxDQUFDLFlBQVksQ0FBQyxJQUFJLENBQUMsRUFBRTtRQUM5RCxPQUFPLFdBQVcsQ0FBQyxZQUFZLENBQUMsSUFBSSxDQUFDLENBQUM7S0FDdkM7SUFFRCxPQUFPLElBQUksQ0FBQztBQUNkLENBQUM7QUFaRCw0RUFZQyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxyXG4gKiBAbGljZW5zZVxyXG4gKiBDb3B5cmlnaHQgR29vZ2xlIExMQyBBbGwgUmlnaHRzIFJlc2VydmVkLlxyXG4gKlxyXG4gKiBVc2Ugb2YgdGhpcyBzb3VyY2UgY29kZSBpcyBnb3Zlcm5lZCBieSBhbiBNSVQtc3R5bGUgbGljZW5zZSB0aGF0IGNhbiBiZVxyXG4gKiBmb3VuZCBpbiB0aGUgTElDRU5TRSBmaWxlIGF0IGh0dHBzOi8vYW5ndWxhci5pby9saWNlbnNlXHJcbiAqL1xyXG5cclxuaW1wb3J0IHtUcmVlfSBmcm9tICdAYW5ndWxhci1kZXZraXQvc2NoZW1hdGljcyc7XHJcblxyXG4vKipcclxuICogU29ydHMgdGhlIGtleXMgb2YgdGhlIGdpdmVuIG9iamVjdC5cclxuICogQHJldHVybnMgQSBuZXcgb2JqZWN0IGluc3RhbmNlIHdpdGggc29ydGVkIGtleXNcclxuICovXHJcbmZ1bmN0aW9uIHNvcnRPYmplY3RCeUtleXMob2JqOiBvYmplY3QpIHtcclxuICByZXR1cm4gT2JqZWN0LmtleXMob2JqKS5zb3J0KCkucmVkdWNlKChyZXN1bHQsIGtleSkgPT4gKHJlc3VsdFtrZXldID0gb2JqW2tleV0pICYmIHJlc3VsdCwge30pO1xyXG59XHJcblxyXG4vKiogQWRkcyBhIHBhY2thZ2UgdG8gdGhlIHBhY2thZ2UuanNvbiBpbiB0aGUgZ2l2ZW4gaG9zdCB0cmVlLiAqL1xyXG5leHBvcnQgZnVuY3Rpb24gYWRkUGFja2FnZVRvUGFja2FnZUpzb24oaG9zdDogVHJlZSwgcGtnOiBzdHJpbmcsIHZlcnNpb246IHN0cmluZyk6IFRyZWUge1xyXG5cclxuICBpZiAoaG9zdC5leGlzdHMoJ3BhY2thZ2UuanNvbicpKSB7XHJcbiAgICBjb25zdCBzb3VyY2VUZXh0ID0gaG9zdC5yZWFkKCdwYWNrYWdlLmpzb24nKSEudG9TdHJpbmcoJ3V0Zi04Jyk7XHJcbiAgICBjb25zdCBqc29uID0gSlNPTi5wYXJzZShzb3VyY2VUZXh0KTtcclxuXHJcbiAgICBpZiAoIWpzb24uZGVwZW5kZW5jaWVzKSB7XHJcbiAgICAgIGpzb24uZGVwZW5kZW5jaWVzID0ge307XHJcbiAgICB9XHJcblxyXG4gICAgaWYgKCFqc29uLmRlcGVuZGVuY2llc1twa2ddKSB7XHJcbiAgICAgIGpzb24uZGVwZW5kZW5jaWVzW3BrZ10gPSB2ZXJzaW9uO1xyXG4gICAgICBqc29uLmRlcGVuZGVuY2llcyA9IHNvcnRPYmplY3RCeUtleXMoanNvbi5kZXBlbmRlbmNpZXMpO1xyXG4gICAgfVxyXG5cclxuICAgIGhvc3Qub3ZlcndyaXRlKCdwYWNrYWdlLmpzb24nLCBKU09OLnN0cmluZ2lmeShqc29uLCBudWxsLCAyKSk7XHJcbiAgfVxyXG5cclxuICByZXR1cm4gaG9zdDtcclxufVxyXG5cclxuLyoqIEdldHMgdGhlIHZlcnNpb24gb2YgdGhlIHNwZWNpZmllZCBwYWNrYWdlIGJ5IGxvb2tpbmcgYXQgdGhlIHBhY2thZ2UuanNvbiBpbiB0aGUgZ2l2ZW4gdHJlZS4gKi9cclxuZXhwb3J0IGZ1bmN0aW9uIGdldFBhY2thZ2VWZXJzaW9uRnJvbVBhY2thZ2VKc29uKHRyZWU6IFRyZWUsIG5hbWU6IHN0cmluZyk6IHN0cmluZyB8IG51bGwge1xyXG4gIGlmICghdHJlZS5leGlzdHMoJ3BhY2thZ2UuanNvbicpKSB7XHJcbiAgICByZXR1cm4gbnVsbDtcclxuICB9XHJcblxyXG4gIGNvbnN0IHBhY2thZ2VKc29uID0gSlNPTi5wYXJzZSh0cmVlLnJlYWQoJ3BhY2thZ2UuanNvbicpIS50b1N0cmluZygndXRmOCcpKTtcclxuXHJcbiAgaWYgKHBhY2thZ2VKc29uLmRlcGVuZGVuY2llcyAmJiBwYWNrYWdlSnNvbi5kZXBlbmRlbmNpZXNbbmFtZV0pIHtcclxuICAgIHJldHVybiBwYWNrYWdlSnNvbi5kZXBlbmRlbmNpZXNbbmFtZV07XHJcbiAgfVxyXG5cclxuICByZXR1cm4gbnVsbDtcclxufVxyXG4iXX0=

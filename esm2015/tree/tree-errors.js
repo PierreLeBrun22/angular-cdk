@@ -1,0 +1,43 @@
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * Returns an error to be thrown when there is no usable data.
+ * @docs-private
+ */
+export function getTreeNoValidDataSourceError() {
+    return Error(`A valid data source must be provided.`);
+}
+/**
+ * Returns an error to be thrown when there are multiple nodes that are missing a when function.
+ * @docs-private
+ */
+export function getTreeMultipleDefaultNodeDefsError() {
+    return Error(`There can only be one default row without a when predicate function.`);
+}
+/**
+ * Returns an error to be thrown when there are no matching node defs for a particular set of data.
+ * @docs-private
+ */
+export function getTreeMissingMatchingNodeDefError() {
+    return Error(`Could not find a matching node definition for the provided node data.`);
+}
+/**
+ * Returns an error to be thrown when there are tree control.
+ * @docs-private
+ */
+export function getTreeControlMissingError() {
+    return Error(`Could not find a tree control for the tree.`);
+}
+/**
+ * Returns an error to be thrown when tree control did not implement functions for flat/nested node.
+ * @docs-private
+ */
+export function getTreeControlFunctionsMissingError() {
+    return Error(`Could not find functions for nested/flat tree in tree control.`);
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidHJlZS1lcnJvcnMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi8uLi9zcmMvY2RrL3RyZWUvdHJlZS1lcnJvcnMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7OztHQU1HO0FBRUg7OztHQUdHO0FBQ0gsTUFBTSxVQUFVLDZCQUE2QjtJQUMzQyxPQUFPLEtBQUssQ0FBQyx1Q0FBdUMsQ0FBQyxDQUFDO0FBQ3hELENBQUM7QUFFRDs7O0dBR0c7QUFDSCxNQUFNLFVBQVUsbUNBQW1DO0lBQ2pELE9BQU8sS0FBSyxDQUFDLHNFQUFzRSxDQUFDLENBQUM7QUFDdkYsQ0FBQztBQUVEOzs7R0FHRztBQUNILE1BQU0sVUFBVSxrQ0FBa0M7SUFDaEQsT0FBTyxLQUFLLENBQUMsdUVBQXVFLENBQUMsQ0FBQztBQUN4RixDQUFDO0FBRUQ7OztHQUdHO0FBQ0gsTUFBTSxVQUFVLDBCQUEwQjtJQUN4QyxPQUFPLEtBQUssQ0FBQyw2Q0FBNkMsQ0FBQyxDQUFDO0FBQzlELENBQUM7QUFFRDs7O0dBR0c7QUFDSCxNQUFNLFVBQVUsbUNBQW1DO0lBQ2pELE9BQU8sS0FBSyxDQUFDLGdFQUFnRSxDQUFDLENBQUM7QUFDakYsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxyXG4gKiBAbGljZW5zZVxyXG4gKiBDb3B5cmlnaHQgR29vZ2xlIExMQyBBbGwgUmlnaHRzIFJlc2VydmVkLlxyXG4gKlxyXG4gKiBVc2Ugb2YgdGhpcyBzb3VyY2UgY29kZSBpcyBnb3Zlcm5lZCBieSBhbiBNSVQtc3R5bGUgbGljZW5zZSB0aGF0IGNhbiBiZVxyXG4gKiBmb3VuZCBpbiB0aGUgTElDRU5TRSBmaWxlIGF0IGh0dHBzOi8vYW5ndWxhci5pby9saWNlbnNlXHJcbiAqL1xyXG5cclxuLyoqXHJcbiAqIFJldHVybnMgYW4gZXJyb3IgdG8gYmUgdGhyb3duIHdoZW4gdGhlcmUgaXMgbm8gdXNhYmxlIGRhdGEuXHJcbiAqIEBkb2NzLXByaXZhdGVcclxuICovXHJcbmV4cG9ydCBmdW5jdGlvbiBnZXRUcmVlTm9WYWxpZERhdGFTb3VyY2VFcnJvcigpIHtcclxuICByZXR1cm4gRXJyb3IoYEEgdmFsaWQgZGF0YSBzb3VyY2UgbXVzdCBiZSBwcm92aWRlZC5gKTtcclxufVxyXG5cclxuLyoqXHJcbiAqIFJldHVybnMgYW4gZXJyb3IgdG8gYmUgdGhyb3duIHdoZW4gdGhlcmUgYXJlIG11bHRpcGxlIG5vZGVzIHRoYXQgYXJlIG1pc3NpbmcgYSB3aGVuIGZ1bmN0aW9uLlxyXG4gKiBAZG9jcy1wcml2YXRlXHJcbiAqL1xyXG5leHBvcnQgZnVuY3Rpb24gZ2V0VHJlZU11bHRpcGxlRGVmYXVsdE5vZGVEZWZzRXJyb3IoKSB7XHJcbiAgcmV0dXJuIEVycm9yKGBUaGVyZSBjYW4gb25seSBiZSBvbmUgZGVmYXVsdCByb3cgd2l0aG91dCBhIHdoZW4gcHJlZGljYXRlIGZ1bmN0aW9uLmApO1xyXG59XHJcblxyXG4vKipcclxuICogUmV0dXJucyBhbiBlcnJvciB0byBiZSB0aHJvd24gd2hlbiB0aGVyZSBhcmUgbm8gbWF0Y2hpbmcgbm9kZSBkZWZzIGZvciBhIHBhcnRpY3VsYXIgc2V0IG9mIGRhdGEuXHJcbiAqIEBkb2NzLXByaXZhdGVcclxuICovXHJcbmV4cG9ydCBmdW5jdGlvbiBnZXRUcmVlTWlzc2luZ01hdGNoaW5nTm9kZURlZkVycm9yKCkge1xyXG4gIHJldHVybiBFcnJvcihgQ291bGQgbm90IGZpbmQgYSBtYXRjaGluZyBub2RlIGRlZmluaXRpb24gZm9yIHRoZSBwcm92aWRlZCBub2RlIGRhdGEuYCk7XHJcbn1cclxuXHJcbi8qKlxyXG4gKiBSZXR1cm5zIGFuIGVycm9yIHRvIGJlIHRocm93biB3aGVuIHRoZXJlIGFyZSB0cmVlIGNvbnRyb2wuXHJcbiAqIEBkb2NzLXByaXZhdGVcclxuICovXHJcbmV4cG9ydCBmdW5jdGlvbiBnZXRUcmVlQ29udHJvbE1pc3NpbmdFcnJvcigpIHtcclxuICByZXR1cm4gRXJyb3IoYENvdWxkIG5vdCBmaW5kIGEgdHJlZSBjb250cm9sIGZvciB0aGUgdHJlZS5gKTtcclxufVxyXG5cclxuLyoqXHJcbiAqIFJldHVybnMgYW4gZXJyb3IgdG8gYmUgdGhyb3duIHdoZW4gdHJlZSBjb250cm9sIGRpZCBub3QgaW1wbGVtZW50IGZ1bmN0aW9ucyBmb3IgZmxhdC9uZXN0ZWQgbm9kZS5cclxuICogQGRvY3MtcHJpdmF0ZVxyXG4gKi9cclxuZXhwb3J0IGZ1bmN0aW9uIGdldFRyZWVDb250cm9sRnVuY3Rpb25zTWlzc2luZ0Vycm9yKCkge1xyXG4gIHJldHVybiBFcnJvcihgQ291bGQgbm90IGZpbmQgZnVuY3Rpb25zIGZvciBuZXN0ZWQvZmxhdCB0cmVlIGluIHRyZWUgY29udHJvbC5gKTtcclxufVxyXG4iXX0=

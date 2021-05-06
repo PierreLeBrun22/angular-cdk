@@ -1,0 +1,28 @@
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * Custom injector to be used when providing custom
+ * injection tokens to components inside a portal.
+ * @docs-private
+ * @deprecated Use `Injector.create` instead.
+ * @breaking-change 11.0.0
+ */
+export class PortalInjector {
+    constructor(_parentInjector, _customTokens) {
+        this._parentInjector = _parentInjector;
+        this._customTokens = _customTokens;
+    }
+    get(token, notFoundValue) {
+        const value = this._customTokens.get(token);
+        if (typeof value !== 'undefined') {
+            return value;
+        }
+        return this._parentInjector.get(token, notFoundValue);
+    }
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicG9ydGFsLWluamVjdG9yLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vLi4vLi4vLi4vc3JjL2Nkay9wb3J0YWwvcG9ydGFsLWluamVjdG9yLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7R0FNRztBQUlIOzs7Ozs7R0FNRztBQUNILE1BQU0sT0FBTyxjQUFjO0lBQ3pCLFlBQ1UsZUFBeUIsRUFDekIsYUFBZ0M7UUFEaEMsb0JBQWUsR0FBZixlQUFlLENBQVU7UUFDekIsa0JBQWEsR0FBYixhQUFhLENBQW1CO0lBQUksQ0FBQztJQUUvQyxHQUFHLENBQUMsS0FBVSxFQUFFLGFBQW1CO1FBQ2pDLE1BQU0sS0FBSyxHQUFHLElBQUksQ0FBQyxhQUFhLENBQUMsR0FBRyxDQUFDLEtBQUssQ0FBQyxDQUFDO1FBRTVDLElBQUksT0FBTyxLQUFLLEtBQUssV0FBVyxFQUFFO1lBQ2hDLE9BQU8sS0FBSyxDQUFDO1NBQ2Q7UUFFRCxPQUFPLElBQUksQ0FBQyxlQUFlLENBQUMsR0FBRyxDQUFNLEtBQUssRUFBRSxhQUFhLENBQUMsQ0FBQztJQUM3RCxDQUFDO0NBQ0YiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcclxuICogQGxpY2Vuc2VcclxuICogQ29weXJpZ2h0IEdvb2dsZSBMTEMgQWxsIFJpZ2h0cyBSZXNlcnZlZC5cclxuICpcclxuICogVXNlIG9mIHRoaXMgc291cmNlIGNvZGUgaXMgZ292ZXJuZWQgYnkgYW4gTUlULXN0eWxlIGxpY2Vuc2UgdGhhdCBjYW4gYmVcclxuICogZm91bmQgaW4gdGhlIExJQ0VOU0UgZmlsZSBhdCBodHRwczovL2FuZ3VsYXIuaW8vbGljZW5zZVxyXG4gKi9cclxuXHJcbmltcG9ydCB7SW5qZWN0b3J9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xyXG5cclxuLyoqXHJcbiAqIEN1c3RvbSBpbmplY3RvciB0byBiZSB1c2VkIHdoZW4gcHJvdmlkaW5nIGN1c3RvbVxyXG4gKiBpbmplY3Rpb24gdG9rZW5zIHRvIGNvbXBvbmVudHMgaW5zaWRlIGEgcG9ydGFsLlxyXG4gKiBAZG9jcy1wcml2YXRlXHJcbiAqIEBkZXByZWNhdGVkIFVzZSBgSW5qZWN0b3IuY3JlYXRlYCBpbnN0ZWFkLlxyXG4gKiBAYnJlYWtpbmctY2hhbmdlIDExLjAuMFxyXG4gKi9cclxuZXhwb3J0IGNsYXNzIFBvcnRhbEluamVjdG9yIGltcGxlbWVudHMgSW5qZWN0b3Ige1xyXG4gIGNvbnN0cnVjdG9yKFxyXG4gICAgcHJpdmF0ZSBfcGFyZW50SW5qZWN0b3I6IEluamVjdG9yLFxyXG4gICAgcHJpdmF0ZSBfY3VzdG9tVG9rZW5zOiBXZWFrTWFwPGFueSwgYW55PikgeyB9XHJcblxyXG4gIGdldCh0b2tlbjogYW55LCBub3RGb3VuZFZhbHVlPzogYW55KTogYW55IHtcclxuICAgIGNvbnN0IHZhbHVlID0gdGhpcy5fY3VzdG9tVG9rZW5zLmdldCh0b2tlbik7XHJcblxyXG4gICAgaWYgKHR5cGVvZiB2YWx1ZSAhPT0gJ3VuZGVmaW5lZCcpIHtcclxuICAgICAgcmV0dXJuIHZhbHVlO1xyXG4gICAgfVxyXG5cclxuICAgIHJldHVybiB0aGlzLl9wYXJlbnRJbmplY3Rvci5nZXQ8YW55Pih0b2tlbiwgbm90Rm91bmRWYWx1ZSk7XHJcbiAgfVxyXG59XHJcbiJdfQ==

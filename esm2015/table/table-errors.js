@@ -1,0 +1,67 @@
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * Returns an error to be thrown when attempting to find an unexisting column.
+ * @param id Id whose lookup failed.
+ * @docs-private
+ */
+export function getTableUnknownColumnError(id) {
+    return Error(`Could not find column with id "${id}".`);
+}
+/**
+ * Returns an error to be thrown when two column definitions have the same name.
+ * @docs-private
+ */
+export function getTableDuplicateColumnNameError(name) {
+    return Error(`Duplicate column definition name provided: "${name}".`);
+}
+/**
+ * Returns an error to be thrown when there are multiple rows that are missing a when function.
+ * @docs-private
+ */
+export function getTableMultipleDefaultRowDefsError() {
+    return Error(`There can only be one default row without a when predicate function.`);
+}
+/**
+ * Returns an error to be thrown when there are no matching row defs for a particular set of data.
+ * @docs-private
+ */
+export function getTableMissingMatchingRowDefError(data) {
+    return Error(`Could not find a matching row definition for the` +
+        `provided row data: ${JSON.stringify(data)}`);
+}
+/**
+ * Returns an error to be thrown when there is no row definitions present in the content.
+ * @docs-private
+ */
+export function getTableMissingRowDefsError() {
+    return Error('Missing definitions for header, footer, and row; ' +
+        'cannot determine which columns should be rendered.');
+}
+/**
+ * Returns an error to be thrown when the data source does not match the compatible types.
+ * @docs-private
+ */
+export function getTableUnknownDataSourceError() {
+    return Error(`Provided data source did not match an array, Observable, or DataSource`);
+}
+/**
+ * Returns an error to be thrown when the text column cannot find a parent table to inject.
+ * @docs-private
+ */
+export function getTableTextColumnMissingParentTableError() {
+    return Error(`Text column could not find a parent table for registration.`);
+}
+/**
+ * Returns an error to be thrown when a table text column doesn't have a name.
+ * @docs-private
+ */
+export function getTableTextColumnMissingNameError() {
+    return Error(`Table text column must have a name.`);
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidGFibGUtZXJyb3JzLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vLi4vLi4vLi4vc3JjL2Nkay90YWJsZS90YWJsZS1lcnJvcnMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7OztHQU1HO0FBRUg7Ozs7R0FJRztBQUNILE1BQU0sVUFBVSwwQkFBMEIsQ0FBQyxFQUFVO0lBQ25ELE9BQU8sS0FBSyxDQUFDLGtDQUFrQyxFQUFFLElBQUksQ0FBQyxDQUFDO0FBQ3pELENBQUM7QUFFRDs7O0dBR0c7QUFDSCxNQUFNLFVBQVUsZ0NBQWdDLENBQUMsSUFBWTtJQUMzRCxPQUFPLEtBQUssQ0FBQywrQ0FBK0MsSUFBSSxJQUFJLENBQUMsQ0FBQztBQUN4RSxDQUFDO0FBRUQ7OztHQUdHO0FBQ0gsTUFBTSxVQUFVLG1DQUFtQztJQUNqRCxPQUFPLEtBQUssQ0FBQyxzRUFBc0UsQ0FBQyxDQUFDO0FBQ3ZGLENBQUM7QUFFRDs7O0dBR0c7QUFDSCxNQUFNLFVBQVUsa0NBQWtDLENBQUMsSUFBUztJQUMxRCxPQUFPLEtBQUssQ0FBQyxrREFBa0Q7UUFDM0Qsc0JBQXNCLElBQUksQ0FBQyxTQUFTLENBQUMsSUFBSSxDQUFDLEVBQUUsQ0FBQyxDQUFDO0FBQ3BELENBQUM7QUFFRDs7O0dBR0c7QUFDSCxNQUFNLFVBQVUsMkJBQTJCO0lBQ3pDLE9BQU8sS0FBSyxDQUFDLG1EQUFtRDtRQUM1RCxvREFBb0QsQ0FBQyxDQUFDO0FBQzVELENBQUM7QUFFRDs7O0dBR0c7QUFDSCxNQUFNLFVBQVUsOEJBQThCO0lBQzVDLE9BQU8sS0FBSyxDQUFDLHdFQUF3RSxDQUFDLENBQUM7QUFDekYsQ0FBQztBQUVEOzs7R0FHRztBQUNILE1BQU0sVUFBVSx5Q0FBeUM7SUFDdkQsT0FBTyxLQUFLLENBQUMsNkRBQTZELENBQUMsQ0FBQztBQUM5RSxDQUFDO0FBRUQ7OztHQUdHO0FBQ0gsTUFBTSxVQUFVLGtDQUFrQztJQUNoRCxPQUFPLEtBQUssQ0FBQyxxQ0FBcUMsQ0FBQyxDQUFDO0FBQ3RELENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcclxuICogQGxpY2Vuc2VcclxuICogQ29weXJpZ2h0IEdvb2dsZSBMTEMgQWxsIFJpZ2h0cyBSZXNlcnZlZC5cclxuICpcclxuICogVXNlIG9mIHRoaXMgc291cmNlIGNvZGUgaXMgZ292ZXJuZWQgYnkgYW4gTUlULXN0eWxlIGxpY2Vuc2UgdGhhdCBjYW4gYmVcclxuICogZm91bmQgaW4gdGhlIExJQ0VOU0UgZmlsZSBhdCBodHRwczovL2FuZ3VsYXIuaW8vbGljZW5zZVxyXG4gKi9cclxuXHJcbi8qKlxyXG4gKiBSZXR1cm5zIGFuIGVycm9yIHRvIGJlIHRocm93biB3aGVuIGF0dGVtcHRpbmcgdG8gZmluZCBhbiB1bmV4aXN0aW5nIGNvbHVtbi5cclxuICogQHBhcmFtIGlkIElkIHdob3NlIGxvb2t1cCBmYWlsZWQuXHJcbiAqIEBkb2NzLXByaXZhdGVcclxuICovXHJcbmV4cG9ydCBmdW5jdGlvbiBnZXRUYWJsZVVua25vd25Db2x1bW5FcnJvcihpZDogc3RyaW5nKSB7XHJcbiAgcmV0dXJuIEVycm9yKGBDb3VsZCBub3QgZmluZCBjb2x1bW4gd2l0aCBpZCBcIiR7aWR9XCIuYCk7XHJcbn1cclxuXHJcbi8qKlxyXG4gKiBSZXR1cm5zIGFuIGVycm9yIHRvIGJlIHRocm93biB3aGVuIHR3byBjb2x1bW4gZGVmaW5pdGlvbnMgaGF2ZSB0aGUgc2FtZSBuYW1lLlxyXG4gKiBAZG9jcy1wcml2YXRlXHJcbiAqL1xyXG5leHBvcnQgZnVuY3Rpb24gZ2V0VGFibGVEdXBsaWNhdGVDb2x1bW5OYW1lRXJyb3IobmFtZTogc3RyaW5nKSB7XHJcbiAgcmV0dXJuIEVycm9yKGBEdXBsaWNhdGUgY29sdW1uIGRlZmluaXRpb24gbmFtZSBwcm92aWRlZDogXCIke25hbWV9XCIuYCk7XHJcbn1cclxuXHJcbi8qKlxyXG4gKiBSZXR1cm5zIGFuIGVycm9yIHRvIGJlIHRocm93biB3aGVuIHRoZXJlIGFyZSBtdWx0aXBsZSByb3dzIHRoYXQgYXJlIG1pc3NpbmcgYSB3aGVuIGZ1bmN0aW9uLlxyXG4gKiBAZG9jcy1wcml2YXRlXHJcbiAqL1xyXG5leHBvcnQgZnVuY3Rpb24gZ2V0VGFibGVNdWx0aXBsZURlZmF1bHRSb3dEZWZzRXJyb3IoKSB7XHJcbiAgcmV0dXJuIEVycm9yKGBUaGVyZSBjYW4gb25seSBiZSBvbmUgZGVmYXVsdCByb3cgd2l0aG91dCBhIHdoZW4gcHJlZGljYXRlIGZ1bmN0aW9uLmApO1xyXG59XHJcblxyXG4vKipcclxuICogUmV0dXJucyBhbiBlcnJvciB0byBiZSB0aHJvd24gd2hlbiB0aGVyZSBhcmUgbm8gbWF0Y2hpbmcgcm93IGRlZnMgZm9yIGEgcGFydGljdWxhciBzZXQgb2YgZGF0YS5cclxuICogQGRvY3MtcHJpdmF0ZVxyXG4gKi9cclxuZXhwb3J0IGZ1bmN0aW9uIGdldFRhYmxlTWlzc2luZ01hdGNoaW5nUm93RGVmRXJyb3IoZGF0YTogYW55KSB7XHJcbiAgcmV0dXJuIEVycm9yKGBDb3VsZCBub3QgZmluZCBhIG1hdGNoaW5nIHJvdyBkZWZpbml0aW9uIGZvciB0aGVgICtcclxuICAgICAgYHByb3ZpZGVkIHJvdyBkYXRhOiAke0pTT04uc3RyaW5naWZ5KGRhdGEpfWApO1xyXG59XHJcblxyXG4vKipcclxuICogUmV0dXJucyBhbiBlcnJvciB0byBiZSB0aHJvd24gd2hlbiB0aGVyZSBpcyBubyByb3cgZGVmaW5pdGlvbnMgcHJlc2VudCBpbiB0aGUgY29udGVudC5cclxuICogQGRvY3MtcHJpdmF0ZVxyXG4gKi9cclxuZXhwb3J0IGZ1bmN0aW9uIGdldFRhYmxlTWlzc2luZ1Jvd0RlZnNFcnJvcigpIHtcclxuICByZXR1cm4gRXJyb3IoJ01pc3NpbmcgZGVmaW5pdGlvbnMgZm9yIGhlYWRlciwgZm9vdGVyLCBhbmQgcm93OyAnICtcclxuICAgICAgJ2Nhbm5vdCBkZXRlcm1pbmUgd2hpY2ggY29sdW1ucyBzaG91bGQgYmUgcmVuZGVyZWQuJyk7XHJcbn1cclxuXHJcbi8qKlxyXG4gKiBSZXR1cm5zIGFuIGVycm9yIHRvIGJlIHRocm93biB3aGVuIHRoZSBkYXRhIHNvdXJjZSBkb2VzIG5vdCBtYXRjaCB0aGUgY29tcGF0aWJsZSB0eXBlcy5cclxuICogQGRvY3MtcHJpdmF0ZVxyXG4gKi9cclxuZXhwb3J0IGZ1bmN0aW9uIGdldFRhYmxlVW5rbm93bkRhdGFTb3VyY2VFcnJvcigpIHtcclxuICByZXR1cm4gRXJyb3IoYFByb3ZpZGVkIGRhdGEgc291cmNlIGRpZCBub3QgbWF0Y2ggYW4gYXJyYXksIE9ic2VydmFibGUsIG9yIERhdGFTb3VyY2VgKTtcclxufVxyXG5cclxuLyoqXHJcbiAqIFJldHVybnMgYW4gZXJyb3IgdG8gYmUgdGhyb3duIHdoZW4gdGhlIHRleHQgY29sdW1uIGNhbm5vdCBmaW5kIGEgcGFyZW50IHRhYmxlIHRvIGluamVjdC5cclxuICogQGRvY3MtcHJpdmF0ZVxyXG4gKi9cclxuZXhwb3J0IGZ1bmN0aW9uIGdldFRhYmxlVGV4dENvbHVtbk1pc3NpbmdQYXJlbnRUYWJsZUVycm9yKCkge1xyXG4gIHJldHVybiBFcnJvcihgVGV4dCBjb2x1bW4gY291bGQgbm90IGZpbmQgYSBwYXJlbnQgdGFibGUgZm9yIHJlZ2lzdHJhdGlvbi5gKTtcclxufVxyXG5cclxuLyoqXHJcbiAqIFJldHVybnMgYW4gZXJyb3IgdG8gYmUgdGhyb3duIHdoZW4gYSB0YWJsZSB0ZXh0IGNvbHVtbiBkb2Vzbid0IGhhdmUgYSBuYW1lLlxyXG4gKiBAZG9jcy1wcml2YXRlXHJcbiAqL1xyXG5leHBvcnQgZnVuY3Rpb24gZ2V0VGFibGVUZXh0Q29sdW1uTWlzc2luZ05hbWVFcnJvcigpIHtcclxuICByZXR1cm4gRXJyb3IoYFRhYmxlIHRleHQgY29sdW1uIG11c3QgaGF2ZSBhIG5hbWUuYCk7XHJcbn1cclxuIl19

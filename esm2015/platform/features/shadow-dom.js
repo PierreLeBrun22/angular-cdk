@@ -1,0 +1,29 @@
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+let shadowDomIsSupported;
+/** Checks whether the user's browser support Shadow DOM. */
+export function _supportsShadowDom() {
+    if (shadowDomIsSupported == null) {
+        const head = typeof document !== 'undefined' ? document.head : null;
+        shadowDomIsSupported = !!(head && (head.createShadowRoot || head.attachShadow));
+    }
+    return shadowDomIsSupported;
+}
+/** Gets the shadow root of an element, if supported and the element is inside the Shadow DOM. */
+export function _getShadowRoot(element) {
+    if (_supportsShadowDom()) {
+        const rootNode = element.getRootNode ? element.getRootNode() : null;
+        // Note that this should be caught by `_supportsShadowDom`, but some
+        // teams have been able to hit this code path on unsupported browsers.
+        if (typeof ShadowRoot !== 'undefined' && ShadowRoot && rootNode instanceof ShadowRoot) {
+            return rootNode;
+        }
+    }
+    return null;
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2hhZG93LWRvbS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uLy4uL3NyYy9jZGsvcGxhdGZvcm0vZmVhdHVyZXMvc2hhZG93LWRvbS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7O0dBTUc7QUFFSCxJQUFJLG9CQUE2QixDQUFDO0FBRWxDLDREQUE0RDtBQUM1RCxNQUFNLFVBQVUsa0JBQWtCO0lBQ2hDLElBQUksb0JBQW9CLElBQUksSUFBSSxFQUFFO1FBQ2hDLE1BQU0sSUFBSSxHQUFHLE9BQU8sUUFBUSxLQUFLLFdBQVcsQ0FBQyxDQUFDLENBQUMsUUFBUSxDQUFDLElBQUksQ0FBQyxDQUFDLENBQUMsSUFBSSxDQUFDO1FBQ3BFLG9CQUFvQixHQUFHLENBQUMsQ0FBQyxDQUFDLElBQUksSUFBSSxDQUFFLElBQVksQ0FBQyxnQkFBZ0IsSUFBSSxJQUFJLENBQUMsWUFBWSxDQUFDLENBQUMsQ0FBQztLQUMxRjtJQUVELE9BQU8sb0JBQW9CLENBQUM7QUFDOUIsQ0FBQztBQUVELGlHQUFpRztBQUNqRyxNQUFNLFVBQVUsY0FBYyxDQUFDLE9BQW9CO0lBQ2pELElBQUksa0JBQWtCLEVBQUUsRUFBRTtRQUN4QixNQUFNLFFBQVEsR0FBRyxPQUFPLENBQUMsV0FBVyxDQUFDLENBQUMsQ0FBQyxPQUFPLENBQUMsV0FBVyxFQUFFLENBQUMsQ0FBQyxDQUFDLElBQUksQ0FBQztRQUVwRSxvRUFBb0U7UUFDcEUsc0VBQXNFO1FBQ3RFLElBQUksT0FBTyxVQUFVLEtBQUssV0FBVyxJQUFJLFVBQVUsSUFBSSxRQUFRLFlBQVksVUFBVSxFQUFFO1lBQ3JGLE9BQU8sUUFBUSxDQUFDO1NBQ2pCO0tBQ0Y7SUFFRCxPQUFPLElBQUksQ0FBQztBQUNkLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcclxuICogQGxpY2Vuc2VcclxuICogQ29weXJpZ2h0IEdvb2dsZSBMTEMgQWxsIFJpZ2h0cyBSZXNlcnZlZC5cclxuICpcclxuICogVXNlIG9mIHRoaXMgc291cmNlIGNvZGUgaXMgZ292ZXJuZWQgYnkgYW4gTUlULXN0eWxlIGxpY2Vuc2UgdGhhdCBjYW4gYmVcclxuICogZm91bmQgaW4gdGhlIExJQ0VOU0UgZmlsZSBhdCBodHRwczovL2FuZ3VsYXIuaW8vbGljZW5zZVxyXG4gKi9cclxuXHJcbmxldCBzaGFkb3dEb21Jc1N1cHBvcnRlZDogYm9vbGVhbjtcclxuXHJcbi8qKiBDaGVja3Mgd2hldGhlciB0aGUgdXNlcidzIGJyb3dzZXIgc3VwcG9ydCBTaGFkb3cgRE9NLiAqL1xyXG5leHBvcnQgZnVuY3Rpb24gX3N1cHBvcnRzU2hhZG93RG9tKCk6IGJvb2xlYW4ge1xyXG4gIGlmIChzaGFkb3dEb21Jc1N1cHBvcnRlZCA9PSBudWxsKSB7XHJcbiAgICBjb25zdCBoZWFkID0gdHlwZW9mIGRvY3VtZW50ICE9PSAndW5kZWZpbmVkJyA/IGRvY3VtZW50LmhlYWQgOiBudWxsO1xyXG4gICAgc2hhZG93RG9tSXNTdXBwb3J0ZWQgPSAhIShoZWFkICYmICgoaGVhZCBhcyBhbnkpLmNyZWF0ZVNoYWRvd1Jvb3QgfHwgaGVhZC5hdHRhY2hTaGFkb3cpKTtcclxuICB9XHJcblxyXG4gIHJldHVybiBzaGFkb3dEb21Jc1N1cHBvcnRlZDtcclxufVxyXG5cclxuLyoqIEdldHMgdGhlIHNoYWRvdyByb290IG9mIGFuIGVsZW1lbnQsIGlmIHN1cHBvcnRlZCBhbmQgdGhlIGVsZW1lbnQgaXMgaW5zaWRlIHRoZSBTaGFkb3cgRE9NLiAqL1xyXG5leHBvcnQgZnVuY3Rpb24gX2dldFNoYWRvd1Jvb3QoZWxlbWVudDogSFRNTEVsZW1lbnQpOiBTaGFkb3dSb290IHwgbnVsbCB7XHJcbiAgaWYgKF9zdXBwb3J0c1NoYWRvd0RvbSgpKSB7XHJcbiAgICBjb25zdCByb290Tm9kZSA9IGVsZW1lbnQuZ2V0Um9vdE5vZGUgPyBlbGVtZW50LmdldFJvb3ROb2RlKCkgOiBudWxsO1xyXG5cclxuICAgIC8vIE5vdGUgdGhhdCB0aGlzIHNob3VsZCBiZSBjYXVnaHQgYnkgYF9zdXBwb3J0c1NoYWRvd0RvbWAsIGJ1dCBzb21lXHJcbiAgICAvLyB0ZWFtcyBoYXZlIGJlZW4gYWJsZSB0byBoaXQgdGhpcyBjb2RlIHBhdGggb24gdW5zdXBwb3J0ZWQgYnJvd3NlcnMuXHJcbiAgICBpZiAodHlwZW9mIFNoYWRvd1Jvb3QgIT09ICd1bmRlZmluZWQnICYmIFNoYWRvd1Jvb3QgJiYgcm9vdE5vZGUgaW5zdGFuY2VvZiBTaGFkb3dSb290KSB7XHJcbiAgICAgIHJldHVybiByb290Tm9kZTtcclxuICAgIH1cclxuICB9XHJcblxyXG4gIHJldHVybiBudWxsO1xyXG59XHJcbiJdfQ==

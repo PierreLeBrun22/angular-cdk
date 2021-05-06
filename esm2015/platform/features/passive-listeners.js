@@ -1,0 +1,36 @@
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/** Cached result of whether the user's browser supports passive event listeners. */
+let supportsPassiveEvents;
+/**
+ * Checks whether the user's browser supports passive event listeners.
+ * See: https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md
+ */
+export function supportsPassiveEventListeners() {
+    if (supportsPassiveEvents == null && typeof window !== 'undefined') {
+        try {
+            window.addEventListener('test', null, Object.defineProperty({}, 'passive', {
+                get: () => supportsPassiveEvents = true
+            }));
+        }
+        finally {
+            supportsPassiveEvents = supportsPassiveEvents || false;
+        }
+    }
+    return supportsPassiveEvents;
+}
+/**
+ * Normalizes an `AddEventListener` object to something that can be passed
+ * to `addEventListener` on any browser, no matter whether it supports the
+ * `options` parameter.
+ * @param options Object to be normalized.
+ */
+export function normalizePassiveListenerOptions(options) {
+    return supportsPassiveEventListeners() ? options : !!options.capture;
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicGFzc2l2ZS1saXN0ZW5lcnMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi8uLi8uLi9zcmMvY2RrL3BsYXRmb3JtL2ZlYXR1cmVzL3Bhc3NpdmUtbGlzdGVuZXJzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7R0FNRztBQUVILG9GQUFvRjtBQUNwRixJQUFJLHFCQUE4QixDQUFDO0FBRW5DOzs7R0FHRztBQUNILE1BQU0sVUFBVSw2QkFBNkI7SUFDM0MsSUFBSSxxQkFBcUIsSUFBSSxJQUFJLElBQUksT0FBTyxNQUFNLEtBQUssV0FBVyxFQUFFO1FBQ2xFLElBQUk7WUFDRixNQUFNLENBQUMsZ0JBQWdCLENBQUMsTUFBTSxFQUFFLElBQUssRUFBRSxNQUFNLENBQUMsY0FBYyxDQUFDLEVBQUUsRUFBRSxTQUFTLEVBQUU7Z0JBQzFFLEdBQUcsRUFBRSxHQUFHLEVBQUUsQ0FBQyxxQkFBcUIsR0FBRyxJQUFJO2FBQ3hDLENBQUMsQ0FBQyxDQUFDO1NBQ0w7Z0JBQVM7WUFDUixxQkFBcUIsR0FBRyxxQkFBcUIsSUFBSSxLQUFLLENBQUM7U0FDeEQ7S0FDRjtJQUVELE9BQU8scUJBQXFCLENBQUM7QUFDL0IsQ0FBQztBQUVEOzs7OztHQUtHO0FBQ0gsTUFBTSxVQUFVLCtCQUErQixDQUFDLE9BQWdDO0lBRTlFLE9BQU8sNkJBQTZCLEVBQUUsQ0FBQyxDQUFDLENBQUMsT0FBTyxDQUFDLENBQUMsQ0FBQyxDQUFDLENBQUMsT0FBTyxDQUFDLE9BQU8sQ0FBQztBQUN2RSxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiLyoqXHJcbiAqIEBsaWNlbnNlXHJcbiAqIENvcHlyaWdodCBHb29nbGUgTExDIEFsbCBSaWdodHMgUmVzZXJ2ZWQuXHJcbiAqXHJcbiAqIFVzZSBvZiB0aGlzIHNvdXJjZSBjb2RlIGlzIGdvdmVybmVkIGJ5IGFuIE1JVC1zdHlsZSBsaWNlbnNlIHRoYXQgY2FuIGJlXHJcbiAqIGZvdW5kIGluIHRoZSBMSUNFTlNFIGZpbGUgYXQgaHR0cHM6Ly9hbmd1bGFyLmlvL2xpY2Vuc2VcclxuICovXHJcblxyXG4vKiogQ2FjaGVkIHJlc3VsdCBvZiB3aGV0aGVyIHRoZSB1c2VyJ3MgYnJvd3NlciBzdXBwb3J0cyBwYXNzaXZlIGV2ZW50IGxpc3RlbmVycy4gKi9cclxubGV0IHN1cHBvcnRzUGFzc2l2ZUV2ZW50czogYm9vbGVhbjtcclxuXHJcbi8qKlxyXG4gKiBDaGVja3Mgd2hldGhlciB0aGUgdXNlcidzIGJyb3dzZXIgc3VwcG9ydHMgcGFzc2l2ZSBldmVudCBsaXN0ZW5lcnMuXHJcbiAqIFNlZTogaHR0cHM6Ly9naXRodWIuY29tL1dJQ0cvRXZlbnRMaXN0ZW5lck9wdGlvbnMvYmxvYi9naC1wYWdlcy9leHBsYWluZXIubWRcclxuICovXHJcbmV4cG9ydCBmdW5jdGlvbiBzdXBwb3J0c1Bhc3NpdmVFdmVudExpc3RlbmVycygpOiBib29sZWFuIHtcclxuICBpZiAoc3VwcG9ydHNQYXNzaXZlRXZlbnRzID09IG51bGwgJiYgdHlwZW9mIHdpbmRvdyAhPT0gJ3VuZGVmaW5lZCcpIHtcclxuICAgIHRyeSB7XHJcbiAgICAgIHdpbmRvdy5hZGRFdmVudExpc3RlbmVyKCd0ZXN0JywgbnVsbCEsIE9iamVjdC5kZWZpbmVQcm9wZXJ0eSh7fSwgJ3Bhc3NpdmUnLCB7XHJcbiAgICAgICAgZ2V0OiAoKSA9PiBzdXBwb3J0c1Bhc3NpdmVFdmVudHMgPSB0cnVlXHJcbiAgICAgIH0pKTtcclxuICAgIH0gZmluYWxseSB7XHJcbiAgICAgIHN1cHBvcnRzUGFzc2l2ZUV2ZW50cyA9IHN1cHBvcnRzUGFzc2l2ZUV2ZW50cyB8fCBmYWxzZTtcclxuICAgIH1cclxuICB9XHJcblxyXG4gIHJldHVybiBzdXBwb3J0c1Bhc3NpdmVFdmVudHM7XHJcbn1cclxuXHJcbi8qKlxyXG4gKiBOb3JtYWxpemVzIGFuIGBBZGRFdmVudExpc3RlbmVyYCBvYmplY3QgdG8gc29tZXRoaW5nIHRoYXQgY2FuIGJlIHBhc3NlZFxyXG4gKiB0byBgYWRkRXZlbnRMaXN0ZW5lcmAgb24gYW55IGJyb3dzZXIsIG5vIG1hdHRlciB3aGV0aGVyIGl0IHN1cHBvcnRzIHRoZVxyXG4gKiBgb3B0aW9uc2AgcGFyYW1ldGVyLlxyXG4gKiBAcGFyYW0gb3B0aW9ucyBPYmplY3QgdG8gYmUgbm9ybWFsaXplZC5cclxuICovXHJcbmV4cG9ydCBmdW5jdGlvbiBub3JtYWxpemVQYXNzaXZlTGlzdGVuZXJPcHRpb25zKG9wdGlvbnM6IEFkZEV2ZW50TGlzdGVuZXJPcHRpb25zKTpcclxuICBBZGRFdmVudExpc3RlbmVyT3B0aW9ucyB8IGJvb2xlYW4ge1xyXG4gIHJldHVybiBzdXBwb3J0c1Bhc3NpdmVFdmVudExpc3RlbmVycygpID8gb3B0aW9ucyA6ICEhb3B0aW9ucy5jYXB0dXJlO1xyXG59XHJcbiJdfQ==

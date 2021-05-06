@@ -1,0 +1,42 @@
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+/**
+ * Mixin to provide a directive with a function that checks if the sticky input has been
+ * changed since the last time the function was called. Essentially adds a dirty-check to the
+ * sticky value.
+ * @docs-private
+ */
+export function mixinHasStickyInput(base) {
+    return class extends base {
+        constructor(...args) {
+            super(...args);
+            this._sticky = false;
+            /** Whether the sticky input has changed since it was last checked. */
+            this._hasStickyChanged = false;
+        }
+        /** Whether sticky positioning should be applied. */
+        get sticky() { return this._sticky; }
+        set sticky(v) {
+            const prevValue = this._sticky;
+            this._sticky = coerceBooleanProperty(v);
+            this._hasStickyChanged = prevValue !== this._sticky;
+        }
+        /** Whether the sticky value has changed since this was last called. */
+        hasStickyChanged() {
+            const hasStickyChanged = this._hasStickyChanged;
+            this._hasStickyChanged = false;
+            return hasStickyChanged;
+        }
+        /** Resets the dirty check for cases where the sticky state has been used without checking. */
+        resetStickyChanged() {
+            this._hasStickyChanged = false;
+        }
+    };
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY2FuLXN0aWNrLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vLi4vLi4vLi4vc3JjL2Nkay90YWJsZS9jYW4tc3RpY2sudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7OztHQU1HO0FBRUgsT0FBTyxFQUFDLHFCQUFxQixFQUFDLE1BQU0sdUJBQXVCLENBQUM7QUE0QjVEOzs7OztHQUtHO0FBQ0gsTUFBTSxVQUFVLG1CQUFtQixDQUE0QixJQUFPO0lBQ3BFLE9BQU8sS0FBTSxTQUFRLElBQUk7UUF5QnZCLFlBQVksR0FBRyxJQUFXO1lBQUksS0FBSyxDQUFDLEdBQUcsSUFBSSxDQUFDLENBQUM7WUFqQjdDLFlBQU8sR0FBWSxLQUFLLENBQUM7WUFFekIsc0VBQXNFO1lBQ3RFLHNCQUFpQixHQUFZLEtBQUssQ0FBQztRQWNXLENBQUM7UUF4Qi9DLG9EQUFvRDtRQUNwRCxJQUFJLE1BQU0sS0FBYyxPQUFPLElBQUksQ0FBQyxPQUFPLENBQUMsQ0FBQyxDQUFDO1FBQzlDLElBQUksTUFBTSxDQUFDLENBQVU7WUFDbkIsTUFBTSxTQUFTLEdBQUcsSUFBSSxDQUFDLE9BQU8sQ0FBQztZQUMvQixJQUFJLENBQUMsT0FBTyxHQUFHLHFCQUFxQixDQUFDLENBQUMsQ0FBQyxDQUFDO1lBQ3hDLElBQUksQ0FBQyxpQkFBaUIsR0FBRyxTQUFTLEtBQUssSUFBSSxDQUFDLE9BQU8sQ0FBQztRQUN0RCxDQUFDO1FBTUQsdUVBQXVFO1FBQ3ZFLGdCQUFnQjtZQUNkLE1BQU0sZ0JBQWdCLEdBQUcsSUFBSSxDQUFDLGlCQUFpQixDQUFDO1lBQ2hELElBQUksQ0FBQyxpQkFBaUIsR0FBRyxLQUFLLENBQUM7WUFDL0IsT0FBTyxnQkFBZ0IsQ0FBQztRQUMxQixDQUFDO1FBRUQsOEZBQThGO1FBQzlGLGtCQUFrQjtZQUNoQixJQUFJLENBQUMsaUJBQWlCLEdBQUcsS0FBSyxDQUFDO1FBQ2pDLENBQUM7S0FHRixDQUFDO0FBQ0osQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxyXG4gKiBAbGljZW5zZVxyXG4gKiBDb3B5cmlnaHQgR29vZ2xlIExMQyBBbGwgUmlnaHRzIFJlc2VydmVkLlxyXG4gKlxyXG4gKiBVc2Ugb2YgdGhpcyBzb3VyY2UgY29kZSBpcyBnb3Zlcm5lZCBieSBhbiBNSVQtc3R5bGUgbGljZW5zZSB0aGF0IGNhbiBiZVxyXG4gKiBmb3VuZCBpbiB0aGUgTElDRU5TRSBmaWxlIGF0IGh0dHBzOi8vYW5ndWxhci5pby9saWNlbnNlXHJcbiAqL1xyXG5cclxuaW1wb3J0IHtjb2VyY2VCb29sZWFuUHJvcGVydHl9IGZyb20gJ0Bhbmd1bGFyL2Nkay9jb2VyY2lvbic7XHJcblxyXG4vKiogQGRvY3MtcHJpdmF0ZSAqL1xyXG5leHBvcnQgdHlwZSBDb25zdHJ1Y3RvcjxUPiA9IG5ldyguLi5hcmdzOiBhbnlbXSkgPT4gVDtcclxuXHJcbi8qKlxyXG4gKiBJbnRlcmZhY2UgZm9yIGEgbWl4aW4gdG8gcHJvdmlkZSBhIGRpcmVjdGl2ZSB3aXRoIGEgZnVuY3Rpb24gdGhhdCBjaGVja3MgaWYgdGhlIHN0aWNreSBpbnB1dCBoYXNcclxuICogYmVlbiBjaGFuZ2VkIHNpbmNlIHRoZSBsYXN0IHRpbWUgdGhlIGZ1bmN0aW9uIHdhcyBjYWxsZWQuIEVzc2VudGlhbGx5IGFkZHMgYSBkaXJ0eS1jaGVjayB0byB0aGVcclxuICogc3RpY2t5IHZhbHVlLlxyXG4gKiBAZG9jcy1wcml2YXRlXHJcbiAqL1xyXG5leHBvcnQgaW50ZXJmYWNlIENhblN0aWNrIHtcclxuICAvKiogV2hldGhlciBzdGlja3kgcG9zaXRpb25pbmcgc2hvdWxkIGJlIGFwcGxpZWQuICovXHJcbiAgc3RpY2t5OiBib29sZWFuO1xyXG5cclxuICAvKiogV2hldGhlciB0aGUgc3RpY2t5IGlucHV0IGhhcyBjaGFuZ2VkIHNpbmNlIGl0IHdhcyBsYXN0IGNoZWNrZWQuICovXHJcbiAgX2hhc1N0aWNreUNoYW5nZWQ6IGJvb2xlYW47XHJcblxyXG4gIC8qKiBXaGV0aGVyIHRoZSBzdGlja3kgdmFsdWUgaGFzIGNoYW5nZWQgc2luY2UgdGhpcyB3YXMgbGFzdCBjYWxsZWQuICovXHJcbiAgaGFzU3RpY2t5Q2hhbmdlZCgpOiBib29sZWFuO1xyXG5cclxuICAvKiogUmVzZXRzIHRoZSBkaXJ0eSBjaGVjayBmb3IgY2FzZXMgd2hlcmUgdGhlIHN0aWNreSBzdGF0ZSBoYXMgYmVlbiB1c2VkIHdpdGhvdXQgY2hlY2tpbmcuICovXHJcbiAgcmVzZXRTdGlja3lDaGFuZ2VkKCk6IHZvaWQ7XHJcbn1cclxuXHJcbi8qKiBAZG9jcy1wcml2YXRlICovXHJcbmV4cG9ydCB0eXBlIENhblN0aWNrQ3RvciA9IENvbnN0cnVjdG9yPENhblN0aWNrPjtcclxuXHJcbi8qKlxyXG4gKiBNaXhpbiB0byBwcm92aWRlIGEgZGlyZWN0aXZlIHdpdGggYSBmdW5jdGlvbiB0aGF0IGNoZWNrcyBpZiB0aGUgc3RpY2t5IGlucHV0IGhhcyBiZWVuXHJcbiAqIGNoYW5nZWQgc2luY2UgdGhlIGxhc3QgdGltZSB0aGUgZnVuY3Rpb24gd2FzIGNhbGxlZC4gRXNzZW50aWFsbHkgYWRkcyBhIGRpcnR5LWNoZWNrIHRvIHRoZVxyXG4gKiBzdGlja3kgdmFsdWUuXHJcbiAqIEBkb2NzLXByaXZhdGVcclxuICovXHJcbmV4cG9ydCBmdW5jdGlvbiBtaXhpbkhhc1N0aWNreUlucHV0PFQgZXh0ZW5kcyBDb25zdHJ1Y3Rvcjx7fT4+KGJhc2U6IFQpOiBDYW5TdGlja0N0b3IgJiBUIHtcclxuICByZXR1cm4gY2xhc3MgZXh0ZW5kcyBiYXNlIHtcclxuICAgIC8qKiBXaGV0aGVyIHN0aWNreSBwb3NpdGlvbmluZyBzaG91bGQgYmUgYXBwbGllZC4gKi9cclxuICAgIGdldCBzdGlja3koKTogYm9vbGVhbiB7IHJldHVybiB0aGlzLl9zdGlja3k7IH1cclxuICAgIHNldCBzdGlja3kodjogYm9vbGVhbikge1xyXG4gICAgICBjb25zdCBwcmV2VmFsdWUgPSB0aGlzLl9zdGlja3k7XHJcbiAgICAgIHRoaXMuX3N0aWNreSA9IGNvZXJjZUJvb2xlYW5Qcm9wZXJ0eSh2KTtcclxuICAgICAgdGhpcy5faGFzU3RpY2t5Q2hhbmdlZCA9IHByZXZWYWx1ZSAhPT0gdGhpcy5fc3RpY2t5O1xyXG4gICAgfVxyXG4gICAgX3N0aWNreTogYm9vbGVhbiA9IGZhbHNlO1xyXG5cclxuICAgIC8qKiBXaGV0aGVyIHRoZSBzdGlja3kgaW5wdXQgaGFzIGNoYW5nZWQgc2luY2UgaXQgd2FzIGxhc3QgY2hlY2tlZC4gKi9cclxuICAgIF9oYXNTdGlja3lDaGFuZ2VkOiBib29sZWFuID0gZmFsc2U7XHJcblxyXG4gICAgLyoqIFdoZXRoZXIgdGhlIHN0aWNreSB2YWx1ZSBoYXMgY2hhbmdlZCBzaW5jZSB0aGlzIHdhcyBsYXN0IGNhbGxlZC4gKi9cclxuICAgIGhhc1N0aWNreUNoYW5nZWQoKTogYm9vbGVhbiB7XHJcbiAgICAgIGNvbnN0IGhhc1N0aWNreUNoYW5nZWQgPSB0aGlzLl9oYXNTdGlja3lDaGFuZ2VkO1xyXG4gICAgICB0aGlzLl9oYXNTdGlja3lDaGFuZ2VkID0gZmFsc2U7XHJcbiAgICAgIHJldHVybiBoYXNTdGlja3lDaGFuZ2VkO1xyXG4gICAgfVxyXG5cclxuICAgIC8qKiBSZXNldHMgdGhlIGRpcnR5IGNoZWNrIGZvciBjYXNlcyB3aGVyZSB0aGUgc3RpY2t5IHN0YXRlIGhhcyBiZWVuIHVzZWQgd2l0aG91dCBjaGVja2luZy4gKi9cclxuICAgIHJlc2V0U3RpY2t5Q2hhbmdlZCgpIHtcclxuICAgICAgdGhpcy5faGFzU3RpY2t5Q2hhbmdlZCA9IGZhbHNlO1xyXG4gICAgfVxyXG5cclxuICAgIGNvbnN0cnVjdG9yKC4uLmFyZ3M6IGFueVtdKSB7IHN1cGVyKC4uLmFyZ3MpOyB9XHJcbiAgfTtcclxufVxyXG4iXX0=

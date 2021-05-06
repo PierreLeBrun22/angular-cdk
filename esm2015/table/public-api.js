@@ -1,0 +1,20 @@
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+export * from './table';
+export * from './cell';
+export * from './coalesced-style-scheduler';
+export * from './row';
+export * from './table-module';
+export * from './sticky-styler';
+export * from './sticky-position-listener';
+export * from './can-stick';
+export * from './text-column';
+export * from './tokens';
+/** Re-export DataSource for a more intuitive experience for users of just the table. */
+export { DataSource } from '@angular/cdk/collections';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uL3NyYy9jZGsvdGFibGUvcHVibGljLWFwaS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7O0dBTUc7QUFFSCxjQUFjLFNBQVMsQ0FBQztBQUN4QixjQUFjLFFBQVEsQ0FBQztBQUN2QixjQUFjLDZCQUE2QixDQUFDO0FBQzVDLGNBQWMsT0FBTyxDQUFDO0FBQ3RCLGNBQWMsZ0JBQWdCLENBQUM7QUFDL0IsY0FBYyxpQkFBaUIsQ0FBQztBQUNoQyxjQUFjLDRCQUE0QixDQUFDO0FBQzNDLGNBQWMsYUFBYSxDQUFDO0FBQzVCLGNBQWMsZUFBZSxDQUFDO0FBQzlCLGNBQWMsVUFBVSxDQUFDO0FBRXpCLHdGQUF3RjtBQUN4RixPQUFPLEVBQUMsVUFBVSxFQUFDLE1BQU0sMEJBQTBCLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcclxuICogQGxpY2Vuc2VcclxuICogQ29weXJpZ2h0IEdvb2dsZSBMTEMgQWxsIFJpZ2h0cyBSZXNlcnZlZC5cclxuICpcclxuICogVXNlIG9mIHRoaXMgc291cmNlIGNvZGUgaXMgZ292ZXJuZWQgYnkgYW4gTUlULXN0eWxlIGxpY2Vuc2UgdGhhdCBjYW4gYmVcclxuICogZm91bmQgaW4gdGhlIExJQ0VOU0UgZmlsZSBhdCBodHRwczovL2FuZ3VsYXIuaW8vbGljZW5zZVxyXG4gKi9cclxuXHJcbmV4cG9ydCAqIGZyb20gJy4vdGFibGUnO1xyXG5leHBvcnQgKiBmcm9tICcuL2NlbGwnO1xyXG5leHBvcnQgKiBmcm9tICcuL2NvYWxlc2NlZC1zdHlsZS1zY2hlZHVsZXInO1xyXG5leHBvcnQgKiBmcm9tICcuL3Jvdyc7XHJcbmV4cG9ydCAqIGZyb20gJy4vdGFibGUtbW9kdWxlJztcclxuZXhwb3J0ICogZnJvbSAnLi9zdGlja3ktc3R5bGVyJztcclxuZXhwb3J0ICogZnJvbSAnLi9zdGlja3ktcG9zaXRpb24tbGlzdGVuZXInO1xyXG5leHBvcnQgKiBmcm9tICcuL2Nhbi1zdGljayc7XHJcbmV4cG9ydCAqIGZyb20gJy4vdGV4dC1jb2x1bW4nO1xyXG5leHBvcnQgKiBmcm9tICcuL3Rva2Vucyc7XHJcblxyXG4vKiogUmUtZXhwb3J0IERhdGFTb3VyY2UgZm9yIGEgbW9yZSBpbnR1aXRpdmUgZXhwZXJpZW5jZSBmb3IgdXNlcnMgb2YganVzdCB0aGUgdGFibGUuICovXHJcbmV4cG9ydCB7RGF0YVNvdXJjZX0gZnJvbSAnQGFuZ3VsYXIvY2RrL2NvbGxlY3Rpb25zJztcclxuIl19
