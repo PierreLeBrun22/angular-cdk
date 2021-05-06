@@ -1,8 +1,10 @@
-Angular Material
+Angular Material CDK
 =======
 
 This fork of angular/components is based on Achilles1515 solution which can be found here : https://github.com/angular/components/issues/22051.
-It solves the CDK Drag boundary for SVGs elements.
+It solves the CDK Drag boundary for SVGs elements problem.
+
+This repo correspond to the build of the CDK part of my modified version of angular/components.
 
 You can install this version of the @angular/cdk lib with :
 ```bash 
